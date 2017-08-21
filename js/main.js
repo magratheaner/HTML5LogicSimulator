@@ -7,6 +7,7 @@ function preload() {
 }
 
 var text;
+var sprite;
 var andGateSelected;
 var oldPosition;
 var newPosition;
@@ -19,7 +20,7 @@ function create() {
     game.scale.fullScreenScaleMode = Phaser.ScaleManager.RESIZE
     game.scale.parentIsWindow = true;
 
-    var sprite = game.add.sprite(0, 0, 'AND-Gate');
+    sprite = game.add.sprite(0, 0, 'AND-Gate');
     text = game.add.text(250, 16, 'test1', { fill: '#ffffff' });
     
     sprite.inputEnabled = true;
@@ -46,7 +47,9 @@ function update() {
         game.input.activePointer.position.copyTo(newPosition);
 
         if (!Phaser.Point.equals(newPosition, oldPosition)) {
-            // TODO: Draw logic gate sprite centered on pointer position
+            // Draw the selected gate centered under the pointer
+            sprite.position.x = newPosition.x - sprite.width / 2;
+            sprite.position.y = newPosition.y - sprite.height / 2;
             text.text = 'New position: ' + newPosition.x + ', ' + newPosition.y;
         }
 
