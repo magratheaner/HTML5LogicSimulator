@@ -1,10 +1,8 @@
-var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render });
+var game = new Phaser.Game('100', '100', Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
-    
-    game.load.baseURL = 'http://i.imgur.com/';
-    game.load.crossOrigin = 'anonymous';
-    game.load.image('AND-Gate', 'm0LOxHc.png');
+
+    game.load.image('AND-Gate', 'assets/AND-Gate-128.png');
 
 }
 
@@ -22,32 +20,31 @@ function create() {
     sprite.events.onInputDown.add(listener, this);
     
     andGateSelected = true;
-    // oldPosition = game.input.activePointer.position();
+    
+    oldPosition = new Phaser.Point();
+    newPosition = new Phaser.Point();
+    game.input.activePointer.position.copyTo(oldPosition);
+    game.input.activePointer.position.copyTo(newPosition);
 
 }
 
 function listener() {
     
-    text.text = "Click registered!";
+    text.text = 'Click registered!';
     
 }
 
 function update() {
 
     if (andGateSelected) {
-        
-        /*
-        newPosition = game.input.activePointer.position();
-        
-        if (!newPosition.equals(newPosition, oldPosition)) {
-            text.text = newPosition.toString();
-            oldPosition = newPosition;
+        game.input.activePointer.position.copyTo(newPosition);
+
+        if (!Phaser.Point.equals(newPosition, oldPosition)) {
+            // TODO: Draw logic gate sprite centered on pointer position
+            text.text = 'New position: ' + newPosition.x + ', ' + newPosition.y;
         }
-        */
-        
-        if (game.input.activePointer.leftButton.justReleased()) {
-            text.text = 'Ha!';
-        }
+
+        newPosition.copyTo(oldPosition);
     }
 
 }
