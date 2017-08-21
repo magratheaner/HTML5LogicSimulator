@@ -13,6 +13,12 @@ var newPosition;
 
 function create() {
 
+    // Rescale the game when the user resizes the browser window
+    // As found here: http://www.html5gamedevs.com/topic/1638-changing-game-size-to-fit-page/
+    game.scale.scaleMode = Phaser.ScaleManager.RESIZE;
+    game.scale.fullScreenScaleMode = Phaser.ScaleManager.RESIZE
+    game.scale.parentIsWindow = true;
+
     var sprite = game.add.sprite(0, 0, 'AND-Gate');
     text = game.add.text(250, 16, 'test1', { fill: '#ffffff' });
     
