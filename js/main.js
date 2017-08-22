@@ -6,7 +6,8 @@ function preload() {
 
 }
 
-var text;
+var debug;
+var debugFlag;
 var sprite;
 var andGateSelected;
 var oldPosition;
@@ -20,8 +21,10 @@ function create() {
     game.scale.fullScreenScaleMode = Phaser.ScaleManager.RESIZE
     game.scale.parentIsWindow = true;
 
+    debugFlag = false;
+
     sprite = game.add.sprite(0, 0, 'AND-Gate');
-    text = game.add.text(250, 16, 'test1', { fill: '#ffffff' });
+    if (debugFlag) debug = game.add.text(15, 15, 'test1', { fill: '#ffffff' });
     
     sprite.inputEnabled = true;
     sprite.events.onInputDown.add(listener, this);
@@ -37,7 +40,7 @@ function create() {
 
 function listener() {
     
-    text.text = 'Click registered!';
+    if (debugFlag) debug.text = 'Click registered!';
     
 }
 
@@ -50,7 +53,7 @@ function update() {
             // Draw the selected gate centered under the pointer
             sprite.position.x = newPosition.x - sprite.width / 2;
             sprite.position.y = newPosition.y - sprite.height / 2;
-            text.text = 'New position: ' + newPosition.x + ', ' + newPosition.y;
+            if (debugFlag) debug.text = 'New position: ' + newPosition.x + ', ' + newPosition.y;
         }
 
         newPosition.copyTo(oldPosition);
