@@ -1,0 +1,27 @@
+{
+  "name": "testing-on-phaser-with-mocha-and-chai",
+  "version": "1.0.0",
+  "main": "phaser.min.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gist.github.com/19f0a24b3e249164c113.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gist.github.com/19f0a24b3e249164c113"
+  },
+  "homepage": "https://gist.github.com/19f0a24b3e249164c113",
+  "description": "",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^3.5.3",
+    "phaser": "^2.6.2"
+  }
+}
